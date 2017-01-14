@@ -16,17 +16,16 @@ def hello_world():
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    uploaded_files = flask.request.files.getlist("file[]")
-    print(uploaded_files)
+    content_fname = 'tmp-images/content_image.jpg'
+    flask.request.files['uploadedfile1'].save(content_fname)
 
-    # TODO change?
-    photos = uploaded_files
+    photo, painting = painting_match.match_with_painting(content_fname)
 
-    photo, painting = painting_match.match_with_painting(photos)
-
-    result = apply_style.apply_style(photo, painting)
-
-    return serve_image(result)
+    if painting is not None:
+        result = apply_style.apply_style(photo, painting)
+        return serve_image(result)
+    else:
+        return "No matching paintings"
 
 
 def serve_image(img):
@@ -37,4 +36,4 @@ def serve_image(img):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

@@ -1,7 +1,11 @@
-def match_with_painting(candidates):
+def match_with_painting(candidate_fname):
     """
 
-    :param candidates: All pictures that the client uploaded
-    :return:  Photo out of candidate photos that best matches a painting, along with that painting
+    :param candidate_fname: Filename of picture that the client uploaded
+    :return:  Photo out of candidate photos that best matches a painting, along with that painting. None if there are no
+    well-matching painings.
     """
+
+    # TODO implement
+
     return None, None

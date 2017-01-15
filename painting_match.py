@@ -136,6 +136,7 @@ def create_graph():
 
 def get_image_name(subcategory):
   image_names = ['Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg',
+                 'happy_birthday_miss_jones.jpg',
                  'Última_Cena_-_Da_Vinci_5.jpg',
                  'Meisje_met_de_parel.jpg',
                  '800px-The_Kiss.JPG',
@@ -145,8 +146,10 @@ def get_image_name(subcategory):
                  '800px-VanGogh-self-portrait-with_bandaged_ear.jpg',
                  '800px-Wheat_stacks_in_Provence.jpg',
                  'The_Scream.jpg',
-                 '800px-Auguste_Renoir_-_A_Girl_with_a_Watering_Can_-_Google_Art_Project.jpg']
+                 '800px-Auguste_Renoir_-_A_Girl_with_a_Watering_Can_-_Google_Art_Project.jpg',
+                 'The-Basket-of-Apples-by-Paul-Cezanne.jpg']
   subcategoris = [['gown', 'stole', 'ocean', 'lake', 'cliff', 'sea', 'shore', 'coast', 'alp', 'sand'],
+                  ['chair', 'table'],
                   ['dining table', 'plate', 'valley'],
                   ['lipstick'],
                   ['nipple', 'cliff dwelling', 'stone wall'],
@@ -156,7 +159,8 @@ def get_image_name(subcategory):
                   ['trench coat', 'wool', 'neck brace', 'paintbrush'],
                   ['hay', 'barn', 'patio', 'eating house', 'mortar', 'manufacture home', 'tile roof', 'lawn', 'mower', 'bucket', 'vase', 'jug', 'dining table', 'daisy'],
                   ['suspension bridge', 'seashore', 'sweatshirt', 'suit', 'alp', 'cliff', 'sand bar', 'face powder', 'lotion', 'oxygen mask', 'sunscreen'],
-                  ['skirt', 'water jug', 'miniskirt', 'gown', 'velvet', 'wool', 'clog', 'greenhouse', 'patio']]
+                  ['skirt', 'water jug', 'miniskirt', 'gown', 'velvet', 'wool', 'clog', 'greenhouse', 'patio'],
+                  ['cellular telephone', 'cellular phone', 'cellphone', 'cell', 'mobile phone', 'wallet', 'billfold', 'notecase', 'pocketbook']]
 
   for i in range(len(subcategoris)):
     for j in range(len(subcategoris[i])):

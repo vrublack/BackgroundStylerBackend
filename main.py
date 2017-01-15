@@ -1,3 +1,4 @@
+from PIL import Image
 import flask
 from flask import Flask
 from flask import send_file
@@ -18,16 +19,26 @@ def hello_world():
 def upload():
     content_fname = 'tmp-images/content_image.jpg'
     flask.request.files['uploadedfile1'].save(content_fname)
+    # resize(content_fname)
 
     painting = painting_match.match_with_painting(content_fname)
 
     print('Painting: ' + painting)
+
+    painting = 'backend/style_images/' + painting
 
     if painting is not None:
         result = apply_style.apply_style(content_fname, painting)
         return serve_image("../" + result)
     else:
         return "No matching paintings"
+
+
+def resize(fname):
+    im = Image.open(fname)
+    im.thumbnail([300, 300], Image.ANTIALIAS)
+    # imResize = im.resize((400,400), Image.ANTIALIAS)
+    im.save(fname, 'JPEG', quality=90)
 
 
 def serve_image(filename):

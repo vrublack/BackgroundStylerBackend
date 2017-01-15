@@ -3,6 +3,8 @@ from subprocess import call
 
 import subprocess
 
+import time
+
 
 def apply_style(content_fname, painting_fname):
     """
@@ -14,14 +16,18 @@ def apply_style(content_fname, painting_fname):
 
     # https://github.com/jcjohnson/neural-style
 
-    iterations = '100'
+    start_time = time.time()
+
+    iterations = 400
 
     commands = '''cd neural-style
     /home/ubuntu/torch/install/bin/th neural_style.lua -style_image {} -content_image {} -num_iterations {}
-    '''.format("~/" + painting_fname, "~/" + content_fname, iterations)
+    '''.format("~/" + painting_fname, "~/" + content_fname, str(iterations))
 
     process = subprocess.Popen('/bin/bash', stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     out, err = process.communicate(commands)
     print out
 
-    return 'neural-style/out_{}.png'.format(iterations)
+    print 'apply_style after ' + str((time.time() - start_time)) + ' seconds'
+
+    return 'neural-style/out_{}.png'.format(str(iterations - 100))

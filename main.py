@@ -23,7 +23,7 @@ def upload():
 
     if painting is not None:
         result = apply_style.apply_style(content_fname, painting)
-        return serve_image(result)
+        return serve_image("../" + result)
     else:
         return "No matching paintings"
 

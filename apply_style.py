@@ -1,17 +1,33 @@
+import os
 from subprocess import call
 
+import subprocess
 
-def apply_style(content_photo, painting):
+import time
+
+
+def apply_style(content_fname, painting_fname):
     """
 
-    :param content_photo: Picture from the user
-    :param painting: Painting with matching content
-    :return: base_photo with the style of painting applied to it
+    :param content_fname: Picture from the user
+    :param painting_fname: Painting with matching content
+    :return: base_photo with the style of painting applied to it (filename)
     """
 
     # https://github.com/jcjohnson/neural-style
-    # th neural_style.lua -style_image <image.jpg> -content_image <image.jpg>
-    # call(["th", "neural_style.lua", "-style_image", image_path, "-content_image", content_path])
-    # saved to out.png
 
-    return None
+    start_time = time.time()
+
+    iterations = 400
+
+    commands = '''cd neural-style
+    /home/ubuntu/torch/install/bin/th neural_style.lua -style_image {} -content_image {} -num_iterations {}
+    '''.format("~/" + painting_fname, "~/" + content_fname, str(iterations))
+
+    process = subprocess.Popen('/bin/bash', stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    out, err = process.communicate(commands)
+    print out
+
+    print 'apply_style after ' + str((time.time() - start_time)) + ' seconds'
+
+    return 'neural-style/out_{}.png'.format(str(iterations - 100))

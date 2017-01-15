@@ -144,7 +144,8 @@ def get_image_name(subcategory):
                  '1024px-Le_bassin_aux_nymphéas_-_Claude_Monet.jpg',
                  '800px-VanGogh-self-portrait-with_bandaged_ear.jpg',
                  '800px-Wheat_stacks_in_Provence.jpg',
-                 'The_Scream.jpg']
+                 'The_Scream.jpg',
+                 '800px-Auguste_Renoir_-_A_Girl_with_a_Watering_Can_-_Google_Art_Project.jpg']
   subcategoris = [['gown', 'stole', 'ocean', 'lake', 'cliff', 'sea', 'shore', 'coast', 'alp', 'sand'],
                   ['dining table', 'plate', 'valley'],
                   ['lipstick'],
@@ -154,7 +155,8 @@ def get_image_name(subcategory):
                   ['lake', 'dam', 'greenhouse'],
                   ['trench coat', 'wool', 'neck brace', 'paintbrush'],
                   ['hay', 'barn', 'patio', 'eating house', 'mortar', 'manufacture home', 'tile roof', 'lawn', 'mower', 'bucket', 'vase', 'jug', 'dining table', 'daisy'],
-                  ['suspension bridge', 'seashore', 'sweatshirt', 'suit']]
+                  ['suspension bridge', 'seashore', 'sweatshirt', 'suit', 'alp', 'cliff', 'sand bar', 'face powder', 'lotion', 'oxygen mask', 'sunscreen'],
+                  ['skirt', 'water jug', 'miniskirt', 'gown', 'velvet', 'wool', 'clog', 'greenhouse', 'patio']]
 
   for i in range(len(subcategoris)):
     for j in range(len(subcategoris[i])):
@@ -245,6 +247,6 @@ def match_with_painting(candidate_fname):
 
   #return 'neural-style/sample_style.jpg'
 
-print(match_with_painting(''))
+#print(match_with_painting('/Users/abureyanahmed/Downloads/suit.jpeg'))
 
 #print(get_image_name('eating house'))

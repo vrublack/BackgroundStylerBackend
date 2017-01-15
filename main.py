@@ -21,6 +21,8 @@ def upload():
 
     painting = painting_match.match_with_painting(content_fname)
 
+    print('Painting: ' + painting)
+
     if painting is not None:
         result = apply_style.apply_style(content_fname, painting)
         return serve_image("../" + result)

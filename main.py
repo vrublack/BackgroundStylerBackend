@@ -19,20 +19,17 @@ def upload():
     content_fname = 'tmp-images/content_image.jpg'
     flask.request.files['uploadedfile1'].save(content_fname)
 
-    photo, painting = painting_match.match_with_painting(content_fname)
+    painting = painting_match.match_with_painting(content_fname)
 
     if painting is not None:
-        result = apply_style.apply_style(photo, painting)
+        result = apply_style.apply_style(content_fname, painting)
         return serve_image(result)
     else:
         return "No matching paintings"
 
 
-def serve_image(img):
-    byte_io = BytesIO()
-    img.save(byte_io, 'PNG')
-    byte_io.seek(0)
-    return send_file(byte_io, mimetype='image/png')
+def serve_image(filename):
+    return send_file(filename, mimetype='image/png')
 
 
 if __name__ == '__main__':

@@ -147,7 +147,10 @@ def get_image_name(subcategory):
                  '800px-Wheat_stacks_in_Provence.jpg',
                  'The_Scream.jpg',
                  '800px-Auguste_Renoir_-_A_Girl_with_a_Watering_Can_-_Google_Art_Project.jpg',
-                 'The-Basket-of-Apples-by-Paul-Cezanne.jpg']
+                 'The-Basket-of-Apples-by-Paul-Cezanne.jpg',
+                 '1024px-Michelangelo_-_Creation_of_Adam.jpg',
+                 '800px-The_Kiss.JPG',
+                 '1024px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg']
   subcategoris = [['gown', 'stole', 'ocean', 'lake', 'cliff', 'sea', 'shore', 'coast', 'alp', 'sand'],
                   ['chair', 'table'],
                   ['dining table', 'plate', 'valley'],
@@ -160,7 +163,10 @@ def get_image_name(subcategory):
                   ['hay', 'barn', 'patio', 'eating house', 'mortar', 'manufacture home', 'tile roof', 'lawn', 'mower', 'bucket', 'vase', 'jug', 'dining table', 'daisy'],
                   ['suspension bridge', 'seashore', 'sweatshirt', 'suit', 'alp', 'cliff', 'sand bar', 'face powder', 'lotion', 'oxygen mask', 'sunscreen'],
                   ['skirt', 'water jug', 'miniskirt', 'gown', 'velvet', 'wool', 'clog', 'greenhouse', 'patio'],
-                  ['cellular telephone', 'cellular phone', 'cellphone', 'cell', 'mobile phone', 'wallet', 'billfold', 'notecase', 'pocketbook']]
+                  ['cellular telephone', 'cellular phone', 'cellphone', 'cell', 'mobile phone', 'wallet', 'billfold', 'notecase', 'pocketbook'],
+                  ['pedestal', 'throne', 'studio', 'couch', 'day bed', 'altar', 'church', 'building', 'cliff dwelling', 'dome', 'stone wall', 'diaper', 'sarong', 'cloak'],
+                  ['daisy', 'quilt', 'conforter', 'sleeping bag'],
+                  ['daisy', 'wing', 'pier', 'lakeside', 'lakeshore', 'sandbar', 'sand bar', 'gown', 'stole', 'cloak', 'chiton']]
 
   for i in range(len(subcategoris)):
     for j in range(len(subcategoris[i])):

@@ -45,7 +45,14 @@ import numpy as np
 from six.moves import urllib
 import tensorflow as tf
 
-FLAGS = None
+class F:
+  def __init__(self):
+      self.model_dir = '/tmp/imagenet'
+      self.image_file = None
+      self.num_top_predictions = 5
+      pass
+    
+FLAGS = F()
 
 # pylint: disable=line-too-long
 DATA_URL = 'http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz'
@@ -127,6 +134,36 @@ def create_graph():
     _ = tf.import_graph_def(graph_def, name='')
 
 
+def get_image_name(subcategory):
+  image_names = ['Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg',
+                 'Última_Cena_-_Da_Vinci_5.jpg',
+                 'Meisje_met_de_parel.jpg',
+                 '800px-The_Kiss.JPG',
+                 '800px-The_Thinker,_Rodin.jpg',
+                 '800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
+                 '1024px-Le_bassin_aux_nymphéas_-_Claude_Monet.jpg',
+                 '800px-VanGogh-self-portrait-with_bandaged_ear.jpg',
+                 '800px-Wheat_stacks_in_Provence.jpg',
+                 'The_Scream.jpg']
+  subcategoris = [['gown', 'stole', 'ocean', 'lake', 'cliff', 'sea', 'shore', 'coast', 'alp', 'sand'],
+                  ['dining table', 'plate', 'valley'],
+                  ['lipstick'],
+                  ['nipple', 'cliff dwelling', 'stone wall'],
+                  ['brass', 'memorial tablet', 'plaque'],
+                  ['castle', 'church', 'grocery', 'market', 'building', 'restaurant', 'thatch', 'roof', 'shop', 'home', 'cliff', 'tree'],
+                  ['lake', 'dam', 'greenhouse'],
+                  ['trench coat', 'wool', 'neck brace', 'paintbrush'],
+                  ['hay', 'barn', 'patio', 'eating house', 'mortar', 'manufacture home', 'tile roof', 'lawn', 'mower', 'bucket', 'vase', 'jug', 'dining table', 'daisy'],
+                  ['suspension bridge', 'seashore', 'sweatshirt', 'suit']]
+
+  for i in range(len(subcategoris)):
+    for j in range(len(subcategoris[i])):
+      if subcategoris[i][j].lower() in subcategory.lower():
+        return image_names[i];
+
+  return image_names[len(image_names)-1]
+
+
 def run_inference_on_image(image):
   """Runs inference on an image.
 
@@ -165,6 +202,7 @@ def run_inference_on_image(image):
       human_string = node_lookup.id_to_string(node_id)
       score = predictions[node_id]
       print('%s (score = %.5f)' % (human_string, score))
+      return get_image_name(human_string)
 
 
 def maybe_download_and_extract():
@@ -190,47 +228,23 @@ def main(_):
   maybe_download_and_extract()
   image = (FLAGS.image_file if FLAGS.image_file else
            os.path.join(FLAGS.model_dir, 'cropped_panda.jpg'))
-  run_inference_on_image(image)
+  print(image)
+  return run_inference_on_image(image)
 
 
 def match_with_painting(candidate_fname):
   """
   :param candidate_fname: Filename of picture that the client uploaded
-  :return:  Filename of painting that matches the candidate photo well. None $
+  :return:  Filename of painting that matches the candidate photo well. None if there are no
   well-matching paintings.
   """
 
-  # TODO implement
-  parser = argparse.ArgumentParser()
-  # classify_image_graph_def.pb:
-  #   Binary representation of the GraphDef protocol buffer.
-  # imagenet_synset_to_human_label_map.txt:
-  #   Map from synset ID to a human readable string.
-  # imagenet_2012_challenge_label_map_proto.pbtxt:
-  #   Text representation of a protocol buffer mapping a label to synset ID.
-  parser.add_argument(
-      '--model_dir',
-      type=str,
-      default='/tmp/imagenet',
-      help="""\
-      Path to classify_image_graph_def.pb,
-      imagenet_synset_to_human_label_map.txt, and
-      imagenet_2012_challenge_label_map_proto.pbtxt.\
-      """
-  )
-  parser.add_argument(
-      '--image_file',
-      type=str,
-      default='',
-      help='Absolute path to image file.'
-  )
-  parser.add_argument(
-      '--num_top_predictions',
-      type=int,
-      default=5,
-      help='Display this many predictions.'
-  )
-  FLAGS, unparsed = parser.parse_known_args()
-  tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+  FLAGS.image_file = candidate_fname
+ 
+  return tf.app.run(main=main, argv=[sys.argv[0]])
 
   #return 'neural-style/sample_style.jpg'
+
+print(match_with_painting(''))
+
+#print(get_image_name('eating house'))

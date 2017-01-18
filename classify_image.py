@@ -215,7 +215,8 @@ def get_image_name(subcategory):
                    'The-Basket-of-Apples-by-Paul-Cezanne.jpg',
                    '1024px-Michelangelo_-_Creation_of_Adam.jpg',
                    '800px-The_Kiss.JPG',
-                   '1024px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg']
+                   '1024px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
+                   'The_Persistence_of_Memory.jpg']
     subcategoris = [['gown', 'stole', 'ocean', 'lake', 'cliff', 'sea', 'shore', 'coast', 'alp', 'sand'],
                     ['chair', 'table'],
                     ['dining table', 'plate', 'valley'],
@@ -237,7 +238,7 @@ def get_image_name(subcategory):
                      'cliff dwelling', 'dome', 'stone wall', 'diaper', 'sarong', 'cloak'],
                     ['daisy', 'quilt', 'conforter', 'sleeping bag'],
                     ['daisy', 'wing', 'pier', 'lakeside', 'lakeshore', 'sandbar', 'sand bar', 'gown', 'stole', 'cloak',
-                     'chiton']]
+                     'chiton'], ['clock']]
 
     for i in range(len(subcategoris)):
         for j in range(len(subcategoris[i])):

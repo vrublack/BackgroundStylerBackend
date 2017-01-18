@@ -18,10 +18,10 @@ def apply_style(content_fname, painting_fname):
 
     start_time = time.time()
 
-    iterations = 400
+    iterations = 300
 
     commands = '''cd neural-style
-    /home/ubuntu/torch/install/bin/th neural_style.lua -style_image {} -content_image {} -num_iterations {} -image_size 300
+    /home/ubuntu/torch/install/bin/th neural_style.lua -style_image {} -content_image {} -num_iterations {}
     '''.format("~/" + painting_fname, "~/" + content_fname, str(iterations))
 
     print('Executing commands: \n' + commands)

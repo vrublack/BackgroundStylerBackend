@@ -6,6 +6,7 @@ from io import BytesIO
 
 import apply_style
 import painting_match
+import push_device
 
 app = Flask(__name__)
 
@@ -21,6 +22,8 @@ def upload():
     flask.request.files['uploadedfile1'].save(content_fname)
     # resize(content_fname)
 
+    fcm_token = flask.request.headers['fcm-token']
+
     painting = painting_match.match_with_painting(content_fname)
 
     print('Painting: ' + painting)
@@ -29,7 +32,10 @@ def upload():
 
     if painting is not None:
         result = apply_style.apply_style(content_fname, painting)
-        return serve_image("../" + result)
+
+        # client request probably timed out by now
+        push_device.notify_device(fcm_token, result)
+        return "Rendered successfully"
     else:
         return "No matching paintings"
 

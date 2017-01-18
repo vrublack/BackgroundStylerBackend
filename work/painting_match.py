@@ -1,4 +1,5 @@
 import subprocess
+from util import *
 
 
 def match_with_painting(candidate_fname):
@@ -8,14 +9,17 @@ def match_with_painting(candidate_fname):
     well-matching paintings.
     """
 
-    commands = '''cd backend
-    python classify_image.py {}
-    '''.format('~/' + candidate_fname)
+    commands = [
+        'cd {}'.format(prepend_proj('work')),
+        'python classify_image.py {}'.format(candidate_fname)
+    ]
 
-    print('Executing commands: \n' + commands)
+    command_str = '\n'.join(commands)
+
+    print('Executing commands: \n' + command_str)
 
     process = subprocess.Popen('/bin/bash', stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-    out, err = process.communicate(commands)
-    print out
+    out, err = process.communicate(command_str)
+    print prepend_home(out)
 
     return out.split('\n')[-2]

@@ -9,17 +9,24 @@ def match_with_painting(candidate_fname):
     well-matching paintings.
     """
 
-    commands = [
-        'cd {}'.format(prepend_proj('work')),
-        'python classify_image.py {}'.format(candidate_fname)
-    ]
+    image_names = ['mona_lisa.jpg',
+                   'happy_birthday_miss_jones.jpg',
+                   'ultima_cena.jpg',
+                   'met_de_parel.jpg',
+                   'starry_night.jpg',
+                   'le_bassin_aux_nympheas.jpg',
+                   'van_gogh_self_portrait.jpg',
+                   'wheat_stacks_in_provence.jpg',
+                   'the_scream.jpg',
+                   'a_girl_with_a_watering_can.jpg',
+                   'basket_of_apples.jpg',
+                   'creation_of_adam.jpg',
+                   'the_persistence_of_memory.jpg',
+                   'twelve_sunflowers.jpg',
+                   'sunday_on_la_grande_jatte.jpg',
+                   'american_gothic.jpg',
+                   'luncheon_of_the_boating_party.jpg',
+                   'tsunami.jpg',
+                   'singing_butler.jpg']
 
-    command_str = '\n'.join(commands)
-
-    print('Executing commands: \n' + command_str)
-
-    process = subprocess.Popen('/bin/bash', stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-    out, err = process.communicate(command_str)
-    print prepend_home(out)
-
-    return out.split('\n')[-2]
+    return image_names[random.randint(0, len(image_names) - 1)]

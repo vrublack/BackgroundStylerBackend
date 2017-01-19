@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="87c43392-f549-4a0a-b27a-d983030a191d" name="AWS Ubuntu Comm" url="http://52.90.143.95">
-        <fileTransfer host="52.90.143.95" port="22" privateKey="$USER_HOME$/Downloads/virginia_aws.pem" accessType="SFTP" keyPair="true">
+      <webServer id="87c43392-f549-4a0a-b27a-d983030a191d" name="AWS Ubuntu Comm" url="http://54.88.210.93">
+        <fileTransfer host="54.88.210.93" port="22" privateKey="$USER_HOME$/Downloads/virginia_aws.pem" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

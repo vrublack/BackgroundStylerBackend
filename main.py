@@ -77,13 +77,6 @@ def upload():
     return "Processing image..."
 
 
-@app.route("/retrieve_result", methods=["GET"])
-def retrieve_result():
-    fname = flask.request.args.get('fname')
-    fname = output_fname(fname)
-    serve_image(fname)
-
-
 def resize(fname):
     im = Image.open(fname)
     im.thumbnail([300, 300], Image.ANTIALIAS)

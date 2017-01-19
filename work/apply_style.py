@@ -19,7 +19,7 @@ def apply_style(content_fname, painting_fname):
     start_time = time.time()
 
     iterations = 500
-    image_size = 1024
+    image_size = 512
 
     output_filename = make_output_fname()
     commands = [

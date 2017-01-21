@@ -14,7 +14,6 @@ def match_with_painting(candidate_fname):
                    'ultima_cena.jpg',
                    'met_de_parel.jpg',
                    'starry_night.jpg',
-                   'le_bassin_aux_nympheas.jpg',
                    'van_gogh_self_portrait.jpg',
                    'wheat_stacks_in_provence.jpg',
                    'the_scream.jpg',

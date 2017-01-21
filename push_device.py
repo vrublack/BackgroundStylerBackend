@@ -10,9 +10,10 @@ push_service = FCMNotification(api_key=api_key)
 
 # Your api-key can be gotten from:  https://console.firebase.google.com/project/<project-name>/settings/cloudmessaging
 
-def notify_device(device_id, image_link):
+def notify_device(device_id, image_link, painting_name):
     data_message = {
-        'result': image_link
+        'result': image_link,
+        'painting-name': painting_name
     }
 
     result = push_service.notify_single_device(registration_id=device_id, data_message=data_message)

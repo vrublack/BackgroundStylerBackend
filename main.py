@@ -55,7 +55,7 @@ def process_image(content_fname, fcm_token):
         result = apply_style(content_fname, painting)
         result = fname_only(result)
         # client notified and provided with the filename
-        push_device.notify_device(fcm_token, result)
+        push_device.notify_device(fcm_token, result, painting)
     else:
         # client not notified, nothing happens
         pass
